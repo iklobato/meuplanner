@@ -1,0 +1,190 @@
+<!-- Sidebar HTML -->
+<div id="mpf-sidebar" class="sidebar" style="position: fixed; top: 0; left: 0; height: 100%; width: 250px; background-color: #f0f0f0; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.1); overflow-y: auto; z-index: 1000;">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="margin: 0; color: #333; font-size: 22px;">Meu Planner Financeiro</h2>
+    </div>
+    
+    <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 10px;">
+            <a href="mensal.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333; border-radius: 5px; font-weight: 500; transition: background-color 0.2s;">
+                <span style="margin-right: 10px;">📊</span> Dashboard Mensal
+            </a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <a href="lancamentos.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333; border-radius: 5px; font-weight: 500; transition: background-color 0.2s;">
+                <span style="margin-right: 10px;">📝</span> Lançamentos
+            </a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <a href="analises.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333; border-radius: 5px; font-weight: 500; transition: background-color 0.2s;">
+                <span style="margin-right: 10px;">📈</span> Análises
+            </a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <a href="planejamento.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333; border-radius: 5px; font-weight: 500; transition: background-color 0.2s;">
+                <span style="margin-right: 10px;">🗓️</span> Planejamento
+            </a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <a href="investimentos.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333; border-radius: 5px; font-weight: 500; transition: background-color 0.2s;">
+                <span style="margin-right: 10px;">💰</span> Investimentos
+            </a>
+        </li>
+        <li style="margin-bottom: 10px;">
+            <a href="planos.html" style="display: block; padding: 10px 15px; text-decoration: none; color: #333; border-radius: 5px; font-weight: 500; transition: background-color 0.2s;">
+                <span style="margin-right: 10px;">📋</span> Planos
+            </a>
+        </li>
+    </ul>
+    
+    <div style="position: absolute; bottom: 20px; left: 0; width: 100%; text-align: center; padding: 0 20px;">
+        <p style="color: #777; font-size: 12px; margin: 0;">Meu Planner Financeiro</p>
+    </div>
+</div>
+
+<!-- Mobile menu toggle button -->
+<div id="mpf-mobile-menu-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+</div>
+
+<!-- Custom styles -->
+<style id="mpf-main-content-style">
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #mpf-content-wrapper {
+        margin-left: 250px;
+        transition: margin-left 0.3s;
+    }
+    
+    .sidebar a:hover {
+        background-color: #e0e0e0;
+    }
+    
+    .sidebar a.active {
+        background-color: #6b7280;
+        color: white !important;
+    }
+    
+    /* Mobile menu toggle button */
+    #mpf-mobile-menu-toggle {
+        display: none;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1001;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    /* Responsive styles for smaller screens */
+    @media (max-width: 768px) {
+        #mpf-sidebar {
+            width: 200px;
+        }
+        
+        #mpf-content-wrapper {
+            margin-left: 200px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        #mpf-mobile-menu-toggle {
+            display: block;
+        }
+        
+        #mpf-sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            width: 250px;
+        }
+        
+        #mpf-sidebar.active {
+            transform: translateX(0);
+        }
+        
+        #mpf-content-wrapper {
+            margin-left: 0;
+        }
+    }
+</style>
+
+<!-- Integration script -->
+<script>
+// Function to set up the navigation system
+function setupNavigation() {
+    // Get the current page filename
+    const currentPage = window.location.pathname.split('/').pop() || 'mensal.html';
+    
+    // Find and mark the active link
+    document.querySelectorAll('#mpf-sidebar a').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Set up mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mpf-mobile-menu-toggle');
+    const sidebar = document.getElementById('mpf-sidebar');
+    
+    if (mobileMenuToggle && sidebar) {
+        mobileMenuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+        });
+    }
+    
+    // Close sidebar when clicking outside of it on mobile
+    document.addEventListener('click', function(event) {
+        const isClickInsideSidebar = sidebar.contains(event.target);
+        const isClickOnMenuToggle = mobileMenuToggle.contains(event.target);
+        
+        if (!isClickInsideSidebar && !isClickOnMenuToggle && window.innerWidth <= 576 && sidebar.classList.contains('active')) {
+            sidebar.classList.remove('active');
+        }
+    });
+}
+
+// Function to wrap the page content
+function wrapPageContent() {
+    // Create a wrapper for the page content
+    const wrapper = document.createElement('div');
+    wrapper.id = 'mpf-content-wrapper';
+    
+    // Move all body content into the wrapper
+    const bodyChildren = Array.from(document.body.children);
+    
+    bodyChildren.forEach(child => {
+        // Skip our navigation elements
+        if (
+            child.id === 'mpf-sidebar' || 
+            child.id === 'mpf-mobile-menu-toggle' || 
+            child.id === 'mpf-main-content-style' ||
+            child === wrapper ||
+            child.tagName === 'SCRIPT' && child.hasAttribute('data-mpf-nav')
+        ) {
+            return;
+        }
+        
+        wrapper.appendChild(child);
+    });
+    
+    // Add the wrapper to the body
+    document.body.appendChild(wrapper);
+}
+
+// Execute when the DOM is fully loaded
+window.addEventListener('DOMContentLoaded', function() {
+    setupNavigation();
+    setTimeout(wrapPageContent, 100); // Small delay to ensure all elements are loaded
+});
+</script>

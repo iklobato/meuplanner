@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="icon" href="static/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Controle Financeiro</title>
+  <link rel="stylesheet" href="static/css/nav.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    .welcome-content {
+      text-align: center;
+      padding-top: 100px;
+    }
+    
+    .welcome-content h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .welcome-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .welcome-content .btn {
+      display: inline-block;
+      background-color: #6b7280;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    
+    .welcome-content .btn:hover {
+      background-color: #4b5563;
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Menu Toggle -->
+  <div class="mcf-mobile-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </div>
+
+  <!-- Navigation Sidebar -->
+  <div class="mcf-sidebar">
+    <h2>Meu Controle Financeiro</h2>
+    <ul>
+      <li><a href="mensal.html" id="nav-mensal">📊 Dashboard Mensal</a></li>
+      <li><a href="lancamentos.html" id="nav-lancamentos">📝 Lançamentos</a></li>
+      <li><a href="analises.html" id="nav-analises">📈 Análises</a></li>
+      <li><a href="planejamento.html" id="nav-planejamento">🗓️ Planejamento</a></li>
+      <li><a href="investimentos.html" id="nav-investimentos">💰 Investimentos</a></li>
+      <li><a href="planos.html" id="nav-planos">📋 Planos</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="mcf-content">
+    <div class="welcome-content">
+      <h1>Bem-vindo ao Meu Controle Financeiro</h1>
+      <p>Gerencie suas finanças de forma fácil e eficiente.</p>
+      <a href="mensal.html" class="btn">Ir para Dashboard</a>
+    </div>
+  </div>
+
+  <script src="static/js/nav.js"></script>
+</body>
+</html>
